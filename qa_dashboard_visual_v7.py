@@ -172,3 +172,25 @@ elif section == "Release & Deployment Metrics":
 
 st.markdown("---")
 st.caption("Sensormatic Digital Dashboard | © Harsha")
+
+
+
+# 📊 Lighthouse Deep Dive Section
+def generate_lighthouse_deep_dive():
+    return pd.DataFrame({
+        'Metric': [
+            'First Contentful Paint (FCP)',
+            'Speed Index',
+            'Time to Interactive (TTI)',
+            'Total Blocking Time (TBT)',
+            'Largest Contentful Paint (LCP)',
+            'Cumulative Layout Shift (CLS)'
+        ],
+        'Value': [1.2, 3.5, 2.8, 150, 2.5, 0.1]
+    })
+
+if section == "Performance & Uptime":
+    st.subheader("📊 Lighthouse Deep Dive")
+    deep_dive_df = generate_lighthouse_deep_dive()
+    st.dataframe(deep_dive_df)
+    st.plotly_chart(px.bar(deep_dive_df, x='Metric', y='Value', color='Metric', title="Detailed Lighthouse Metrics"))
